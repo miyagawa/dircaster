@@ -41,7 +41,7 @@ module Dircaster
         link: base,
         description: "Audio files in #{dir}",
         now: Time.now,
-        files: files,
+        files: files.sort_by(&:mtime).reverse,
       }
       puts ERB.new(File.open(template).read).result(binding)
     end
