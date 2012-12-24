@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Dircaster::VERSION
   gem.authors       = ["Tatsuhiko Miyagawa"]
   gem.email         = ["miyagawa@bulknews.net"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{directory podcaster}
+  gem.summary       = %q{Generate RSS 2.0 Podcast out of a directory with *.mp3 files}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
