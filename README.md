@@ -1,29 +1,14 @@
 # Dircaster
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'dircaster'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install dircaster
+Generate RSS 2.0 Podcast feed out of directory full of MP3 files.
 
 ## Usage
 
-TODO: Write usage instructions here
+    dircaster ~/Music/Audio http://foo.example.com/Audio > ~/Music/Audio/podcast.xml
 
-## Contributing
+This script generates Podcast feed out of MP3 files in a directory. Audio metadata are automatically extracted from MP3's ID3 tags and embedded in the generated RSS feed. MP3 files should be accessible via the URL base you supply as a 2nd argument. Tip: Dropbox's Public folder makes it easy.
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+## Author
+
+Tatsuhiko Miyagawa
+
