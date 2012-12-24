@@ -37,7 +37,7 @@ module Dircaster
     def generate_feed
       template = File.expand_path(File.dirname(__FILE__) + '/dircaster/rss.erb')
       vars = {
-        title: "Podcast feed of #{dir.basename}",
+        title: "#{dir.basename} Podcast",
         link: base,
         description: "Audio files in #{dir}",
         now: Time.now,
