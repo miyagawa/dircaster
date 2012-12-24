@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:content="http://purl.org/rss/1.0/modules/content/"
+ xmlns:itunes="http://www.itunes.com/DTDs/Podcast-1.0.dtd"
+ xmlns:media="http://search.yahoo.com/mrss"
+ version="2.0">
+<channel>
+<ttl>60</ttl>
+<title><%=h vars[:title] %></title>
+<link><%=h vars[:link] %></link>
+<description>
+<%=h vars[:description] %>
+</description>
+<language>ja</language>
+<lastBuildDate><%=h vars[:now].rfc2822 %></lastBuildDate>
+<generator>https://github.com/miyagawa/dircaster</generator>
+<% vars[:files].each do |file| %>
+<item>
+<title><%=h file.title %></titke>
+<link><%=h file.url %></link>
+<description><%=h file.name %></description>
+<itunes:author><%=h file.artist %></itunes:author>
+<author><%=h file.artist %></author>
+<guid><%= file.url %></guid>
+<dc:creator><%=h file.artist %></dc:creator>
+<pubDate><%=h file.mtime.rfc2822 %></pubDate>
+<enclosure url="<%=h file.url %>" type="audio/mpeg" length="<%= file.size %>" />
+</item>
+<% end %>
+</channel>
+</rss>
