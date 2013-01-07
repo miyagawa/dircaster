@@ -25,6 +25,7 @@
 <guid><%= file.url %></guid>
 <dc:creator><%=h file.artist %></dc:creator>
 <pubDate><%=h file.mtime.rfc2822 %></pubDate>
+<itunes:duration><%= h file.duration.format %></itunes:duration>
 <enclosure url="<%=h file.url %>" type="audio/mpeg" length="<%= file.size %>" />
 </item>
 <% end %>

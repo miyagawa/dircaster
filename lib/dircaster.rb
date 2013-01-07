@@ -50,9 +50,14 @@ module Dircaster
   class MP3
     def initialize(file, base, root)
       @file = file
-      @tag = decode_values(Mp3Info.open(file).tag)
+      @info = Mp3Info.open(file)
+      @tag  = decode_values(@info.tag)
       @base = base
       @root = root
+    end
+
+    def duration
+      @duration ||= Duration.new(@info.length.to_i)
     end
 
     def artist
@@ -94,6 +99,31 @@ module Dircaster
 
     def url
       @base.to_s + '/' + @file.relative_path_from(@root).to_s
+    end
+  end
+
+  class Duration
+    def initialize(sec)
+      @second = sec
+      @hour, @minute = 0, 0
+      if @second >= 60
+        @minute, @second = div(@second, 60)
+      end
+      if @minute >= 60
+        @hour, @minute = div(@minute, 60)
+      end
+    end
+
+    def div(number, base)
+      [number / base, number % base]
+    end
+
+    def format
+      if @hour > 0
+        "%d:%02d:%02d" % [@hour, @minute, @second]
+      else
+        "%02d:%02d" % [@minute, @second]
+      end
     end
   end
 end
