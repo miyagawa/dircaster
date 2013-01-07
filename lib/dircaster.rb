@@ -10,7 +10,7 @@ module Dircaster
 
     attr_accessor :dir, :base, :feed, :files
     def initialize(dir, base = nil)
-      @dir, @base = Pathname.new(dir), base
+      @dir, @base = Pathname.new(dir), base.dup
       @base.chop! if /\/$/ === @base
       @files = []
     end
