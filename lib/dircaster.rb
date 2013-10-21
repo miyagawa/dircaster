@@ -27,7 +27,8 @@ module Dircaster
     def walk_down(dir, root)
       dir.children.each do |file|
         if /\.mp3$/ === file.to_s
-          files.push MP3.new(file, base, root)
+          mp3 = MP3.new(file, base, root)
+          files.push(mp3) if mp3.valid?
         elsif file.directory?
           walk_down(file, root)
         end
@@ -50,10 +51,20 @@ module Dircaster
   class MP3
     def initialize(file, base, root)
       @file = file
-      @info = Mp3Info.open(file)
-      @tag  = decode_values(@info.tag)
+      @info, @tag = parse_mp3(file)
       @base = base
       @root = root
+    end
+
+    def valid?
+      !@info.nil?
+    end
+
+    def parse_mp3(file)
+      info = Mp3Info.open(file)
+      [info, info.tag]
+    rescue Mp3InfoError
+      nil
     end
 
     def duration
