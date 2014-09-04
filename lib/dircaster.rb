@@ -80,7 +80,7 @@ module Dircaster
     end
 
     def title
-      @tag['title']
+      @tag['title'] || @file.basename
     end
 
     def genre
