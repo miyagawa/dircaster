@@ -101,7 +101,7 @@ module Dircaster
     end
 
     def description
-      @tag['comment'] || name
+      @tag['comments'] || name
     end
 
     def name
