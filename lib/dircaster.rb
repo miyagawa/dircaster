@@ -100,6 +100,10 @@ module Dircaster
       @file.size
     end
 
+    def description
+      @tag['comment'] || name
+    end
+
     def name
       @file.basename.to_s
     end
